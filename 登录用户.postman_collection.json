@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "d3d96c68-23b0-46a9-b7c1-e2df87cd6181",
+		"name": "登录用户",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "用户登录",
+			"item": [
+				{
+					"name": "查询用户",
+					"item": [
+						{
+							"name": "查询用户",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "用户登录2",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "登录用户",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ae5c963c-a3eb-4fd4-a961-f412fa5cd79a",
+								"exec": [
+									"var haha = pm.response.json().data",
+									"pm.globals.set(\"id_g2\", \"Bearer \" + haha);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mobile\":\"13800000002\", \r\n\"password\":\"123456\"}"
+						},
+						"url": {
+							"raw": "http://182.92.81.159/api/sys/login",
+							"protocol": "http",
+							"host": [
+								"182",
+								"92",
+								"81",
+								"159"
+							],
+							"path": [
+								"api",
+								"sys",
+								"login"
+							],
+							"query": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "添加用户",
+			"item": [
+				{
+					"name": "用户添加",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c1a8fe3c-b862-4e7c-a962-94812edbe6b0",
+								"exec": [
+									"var token = pm.response.json().data.id",
+									"",
+									"pm.globals.set(\"ad\", token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{id_g2}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"deirrriie\",\r\n    \"mobile\": \"15588855123\",\r\n    \"timeOfEntry\": \"2019-07-01\",\r\n    \"formOfEmployment\": 1,\r\n    \"workNumber\": \"1234131\",\r\n    \"departmentName\": \"开发部\",\r\n    \"departmentId\": \"1066240656856453120\",\r\n    \"correctionTime\": \"2019-11-30\"}"
+						},
+						"url": {
+							"raw": "http://182.92.81.159/api/sys/user",
+							"protocol": "http",
+							"host": [
+								"182",
+								"92",
+								"81",
+								"159"
+							],
+							"path": [
+								"api",
+								"sys",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
